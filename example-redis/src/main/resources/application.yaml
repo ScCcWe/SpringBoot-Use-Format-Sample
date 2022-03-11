@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: example-redis
+  
+  # 配置redis
+  redis:
+    host: localhost
+    database: 9
+    port: 6379
