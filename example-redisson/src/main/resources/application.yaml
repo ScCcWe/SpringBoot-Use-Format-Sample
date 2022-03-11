@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: example-redisson
+
+
+# 自己添加的RedissonProperties
+redisson:
+  config:
+    host: redis://127.0.0.1:6379
+    database: 8
