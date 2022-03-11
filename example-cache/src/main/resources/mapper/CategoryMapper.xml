@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.cache.dao.CategoryDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.example.cache.entity.CategoryEntity" id="categoryMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="parentCategoryId" column="parent_category_id"/>
+        <result property="categoryLevel" column="category_level"/>
+    </resultMap>
+    
+    
+    <select id="getLevelOneCategory" resultMap="categoryMap" >
+        select id, name, parent_category_id, category_level
+        from example_category
+        where category_level = 1;
+    </select>
+    
+    
+    <select id="getCategoryList" resultMap="categoryMap">
+        select id, name, parent_category_id, category_level
+        from example_category;
+    </select>
+
+
+</mapper>

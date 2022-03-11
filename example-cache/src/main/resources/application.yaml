@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: example-cache
+  
+  # 配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/boot_example?useUnicode=true&useSSL=false&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: beicuide123
+
+  # 配置redis
+  redis:
+    host: localhost
+    port: 6379
+    database: 5
+
+  # 配置spring-cache
+  cache:
+    type: redis
+    redis:
+      # 缓存的存活时间：3600000ms = 1000ms * 60 * 60  即一个小时; 
+      # 大多数情况下，缓存的ttl不同；这时候，可以防止缓存击穿（当然击穿最好的解决是锁 sync=true
+      time-to-live: 3600000
+      # 缓存空值，防止缓存穿透
+      cache-null-values: true
+      # 使用缓存前缀
+      # 如果此项配置为true，但是自己没设置缓存前缀，则自动使用分区名为缓存前缀
+      use-key-prefix: true
+      # 缓存前缀
+      # key-prefix: EXAMPLE_CACHE_
+
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
